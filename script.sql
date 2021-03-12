@@ -1,6 +1,36 @@
-use mysql;
-create user 'admin'@'localhost' identified by 'fjeclot';
-create database ongs;
-use ongs;
-create table associacio(CIF varchar(9), nom varchar(20), adresa varchar(20), poblacio varchar(20), comarca varchar(20), tipus varchar(20), utilitat_publica boolean);
-grant select,insert,delete, update on bdcli.tlcli to 'admin'@'localhost';
+USE mysql;
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'fjeclot';
+CREATE DATABASE ongs;
+USE ongs;
+
+CREATE TABLE Associacio(CIF VARCHAR(9) PRIMARY KEY, nom VARCHAR(20) NOT NULL, 
+adresa VARCHAR(20) NOT NULL, poblacio VARCHAR(20) NOT NULL, comarca VARCHAR(20) NOT NULL, 
+tipus VARCHAR(20) NOT NULL, utilitat_publica BOOLEAN NOT NULL);
+
+CREATE TABLE Soci(NIF VARCHAR(9) PRIMARY KEY, nom_cognoms VARCHAR(40) NOT NULL, adresa VARCHAR(20) NOT NULL, 
+poblacio VARCHAR(20) NOT NULL, comarca VARCHAR(20) NOT NULL, tel_fixe VARCHAR(9) NOT NULL, 
+tel_mobil VARCHAR(9) NOT NULL, email VARCHAR(30) NOT NULLL, data_alta DATE NOT NULL, 
+quota_mensual DECIMAL(4,2) NOT NULL, aportacio_anual DECIMAL(5,2) NOT NULL);
+
+CREATE TABLE Treballador_voluntari(NIF VARCHAR(9) PRIMARY KEY, nom_cognoms VARCHAR(40) NOT NULL,
+adresa VARCHAR(20) NOT NULL, poblacio VARCHAR(20) NOT NULL, comarca VARCHAR(20) NOT NULL,
+tel_fixe VARCHAR(9) NOT NULL, tel_mobil VARCHAR(9) NOT NULL, email VARCHAR(20) NOT NULL,
+data_ingres DATE NOT NULL, edat TINYINT NOT NULL, professio VARCHAR(20) NOT NULL, hores TINYINT NOT NULL,
+CIF_ong VARCHAR(9), FOREIGN KEY (CIF_ong) REFERENCES Associacio(CIF));
+
+CREATE TABLE Treballador_professional AS 
+SELECT NIF, nom_cognoms, adresa, poblacio, comarca, tel_fixe, tel_mobil, email, data_ingres
+FROM Treballador_voluntari;
+
+ALTER TABLE Treballador_professional
+ADD carrec VARCHAR(20) NOT NULL;
+
+ALTER TABLE Treballador_professional
+ADD quantitat_SS SMALLINT NOT NULL;
+
+ALTER TABLE Treballador_professional
+ADD percentatge_irpf TINYINT NOT NULL;
+
+CREATE TABLE Socis_associacions(CIF_associacio VARCHAR(9), NIF_soci VARCHAR(9), 
+PRIMARY KEY (CIF_associacio, NIF_soci), FOREIGN KEY (CIF_associacio) REFERENCES Associacio(CIF),
+FOREIGN KEY (NIF_soci) REFERENCES Soci(NIF));
