@@ -34,3 +34,10 @@ ADD percentatge_irpf TINYINT NOT NULL;
 CREATE TABLE Socis_associacions(CIF_associacio VARCHAR(9), NIF_soci VARCHAR(9), 
 PRIMARY KEY (CIF_associacio, NIF_soci), FOREIGN KEY (CIF_associacio) REFERENCES Associacio(CIF),
 FOREIGN KEY (NIF_soci) REFERENCES Soci(NIF));
+
+CREATE DATABASE usuaris;
+USE usuaris;
+
+CREATE TABLE usuaris(nom_usuari VARCHAR(10) PRIMARY KEY, contrasenya VARCHAR(10) NOT NULL,
+nom VARCHAR(10) NOT NULL, cognoms VARCHAR(25) NOT NULL, email VARCHAR(20) NOT NULL,
+ultima_entrada DATETIME, ultima_sortida DATETIME, administrador BOOLEAN NOT NULL);
