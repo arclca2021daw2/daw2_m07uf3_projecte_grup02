@@ -1,5 +1,3 @@
-USE mysql;
-CREATE USER 'admin'@'localhost' IDENTIFIED BY 'fjeclot';
 CREATE DATABASE ongs;
 USE ongs;
 
@@ -9,7 +7,7 @@ tipus VARCHAR(20) NOT NULL, utilitat_publica BOOLEAN NOT NULL);
 
 CREATE TABLE Soci(NIF VARCHAR(9) PRIMARY KEY, nom_cognoms VARCHAR(40) NOT NULL, adresa VARCHAR(20) NOT NULL, 
 poblacio VARCHAR(20) NOT NULL, comarca VARCHAR(20) NOT NULL, tel_fixe VARCHAR(9) NOT NULL, 
-tel_mobil VARCHAR(9) NOT NULL, email VARCHAR(30) NOT NULLL, data_alta DATE NOT NULL, 
+tel_mobil VARCHAR(9) NOT NULL, email VARCHAR(30) NOT NULL, data_alta DATE NOT NULL, 
 quota_mensual DECIMAL(4,2) NOT NULL, aportacio_anual DECIMAL(5,2) NOT NULL);
 
 CREATE TABLE Treballador_voluntari(NIF VARCHAR(9) PRIMARY KEY, nom_cognoms VARCHAR(40) NOT NULL,
@@ -41,3 +39,9 @@ USE usuaris;
 CREATE TABLE usuaris(nom_usuari VARCHAR(10) PRIMARY KEY, contrasenya VARCHAR(10) NOT NULL,
 nom VARCHAR(10) NOT NULL, cognoms VARCHAR(25) NOT NULL, email VARCHAR(20) NOT NULL,
 ultima_entrada DATETIME, ultima_sortida DATETIME, administrador BOOLEAN NOT NULL);
+
+INSERT INTO usuaris VALUES ('admin', 'fjeclot', 'admin', 'admin', 'admin@admin.com', NULL, NULL, true);
+DROP USER admin@localhost;
+FLUSH PRIVILEGES;
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'fjeclot';
+GRANT ALL ON *.* TO 'admin'@'localhost';
