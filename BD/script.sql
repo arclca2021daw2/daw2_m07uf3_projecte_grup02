@@ -28,13 +28,13 @@ FOREIGN KEY (NIF) REFERENCES Treballador(NIF));
 
 CREATE DATABASE IF NOT EXISTS usuaris;
 USE usuaris;
-
-CREATE TABLE IF NOT EXISTS usuaris(nom_usuari VARCHAR(10) PRIMARY KEY, contrasenya VARCHAR(32) NOT NULL,
-nom VARCHAR(10) NOT NULL, cognoms VARCHAR(25) NOT NULL, email VARCHAR(20) NOT NULL,
+DROP TABLE IF EXISTS usuaris;
+CREATE TABLE IF NOT EXISTS usuaris (nom_usuari VARCHAR(20) PRIMARY KEY, contrasenya VARCHAR(40) NOT NULL,
+nom VARCHAR(10) NOT NULL, cognoms VARCHAR(25) NOT NULL, email VARCHAR(30) NOT NULL,
 mobil VARCHAR(9) NOT NULL, ultima_entrada DATETIME, ultima_sortida DATETIME, administrador BOOLEAN NOT NULL);
 
-INSERT INTO usuaris VALUES ('segavi2021daw2', MD5('fjeclot'), 'Sergio', 'Garcia', 'segavi2021daw2@gmail.com', '666666666', NULL, NULL, true);
-INSERT INTO usuaris VALUES ('arclca2021daw2', MD5('fjeclot'), 'Arnau', 'Claramunt', 'arclca2021daw2@gmail.com', '666666666', NULL, NULL, true);
+INSERT INTO usuaris VALUES ('segavi2021daw2',MD5('fjeclot'),'Sergio','Garcia','segavi2021daw2@gmail.com','666666666',NULL,NULL,TRUE);
+INSERT INTO usuaris VALUES ('arclca2021daw2',MD5('fjeclot'),'Arnau','Claramunt','arclca2021daw2@gmail.com','666666666',NULL,NULL,TRUE);
 
 CREATE USER IF NOT EXISTS 'arclca2021daw2'@'localhost' IDENTIFIED BY 'fjeclot';
 CREATE USER IF NOT EXISTS 'segavi2021daw2'@'localhost' IDENTIFIED BY 'fjeclot';
