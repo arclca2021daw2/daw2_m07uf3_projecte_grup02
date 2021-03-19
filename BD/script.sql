@@ -1,5 +1,4 @@
 DROP DATABASE IF EXISTS ongs;
-DROP DATABASE IF EXISTS usuaris;
 CREATE DATABASE ongs;
 USE ongs;
 
@@ -28,8 +27,6 @@ CREATE TABLE Treballador_Professional(NIF VARCHAR(9) PRIMARY KEY, carrec VARCHAR
 quantitat_SS DECIMAL(5,2) NOT NULL, percentatge_irpf DECIMAL(2,1) NOT NULL,
 FOREIGN KEY (NIF) REFERENCES Treballador(NIF));
 
-CREATE DATABASE usuaris;
-USE usuaris;
 CREATE TABLE usuaris (nom_usuari VARCHAR(20) PRIMARY KEY, contrasenya VARCHAR(40) NOT NULL,
 nom VARCHAR(10) NOT NULL, cognoms VARCHAR(25) NOT NULL, email VARCHAR(30) NOT NULL,
 mobil VARCHAR(9) NOT NULL, ultima_entrada DATETIME, ultima_sortida DATETIME, administrador BOOLEAN NOT NULL);
@@ -39,5 +36,7 @@ INSERT INTO usuaris VALUES ('arclca2021daw2',MD5('fjeclot'),'Arnau','Claramunt',
 
 CREATE USER IF NOT EXISTS 'arclca2021daw2'@'localhost' IDENTIFIED BY 'fjeclot';
 CREATE USER IF NOT EXISTS 'segavi2021daw2'@'localhost' IDENTIFIED BY 'fjeclot';
-GRANT ALL ON *.* TO 'segavi2021daw2'@'localhost';
-GRANT ALL ON *.* TO 'arclca2021daw2'@'localhost';
+GRANT ALL ON ongs.* TO 'segavi2021daw2'@'localhost';
+GRANT ALL ON ongs.* TO 'arclca2021daw2'@'localhost';
+
+
