@@ -44,6 +44,12 @@ class ongctl extends Controller
             'tipus' => 'required',
             'utilitat_publica' => 'required'
         ]);
+        /*$ut;
+        if ($request->get('utilitat_publica') == 'on') {
+            $ut = true; 
+        } else {
+            $ut = false;
+        }*/
         $novaong = new Ong([
             'cif' => $request->get('cif'),
             'nom' => $request->get('nom'),
@@ -51,7 +57,7 @@ class ongctl extends Controller
             'poblacio' => $request->get('poblacio'),
             'comarca' => $request->get('comarca'),
             'tipus' => $request->get('tipus'),
-            'utilitat_publica' => $request->get('utilitat_publica'),
+            'utilitat_publica' => $request->get('utilitat_publica', 0),
         ]);
         $novaong->save();
         return redirect()->route('ong.create')->with('Exit', 'Ong afegida');

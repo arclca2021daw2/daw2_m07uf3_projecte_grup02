@@ -27,7 +27,7 @@ CREATE TABLE treballador_professionals(NIF VARCHAR(9) PRIMARY KEY, carrec VARCHA
 quantitat_SS DECIMAL(5,2) NOT NULL, percentatge_irpf DECIMAL(2,1) NOT NULL,
 FOREIGN KEY (NIF) REFERENCES treballadors(NIF));
 
-CREATE TABLE usuaris (nom_usuari VARCHAR(20) PRIMARY KEY, contrasenya VARCHAR(40) NOT NULL,
+CREATE TABLE usuaris (nom_usuari VARCHAR(20) PRIMARY KEY, contrasenya VARCHAR(32) NOT NULL,
 nom VARCHAR(10) NOT NULL, cognoms VARCHAR(25) NOT NULL, email VARCHAR(30) NOT NULL,
 mobil VARCHAR(9) NOT NULL, ultima_entrada DATETIME, ultima_sortida DATETIME, administrador BOOLEAN NOT NULL);
 
