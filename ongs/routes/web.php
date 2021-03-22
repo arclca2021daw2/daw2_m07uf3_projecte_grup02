@@ -17,4 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('ong', 'ongctl');
+Route::resource('ongs','ongsctl');
+//Auth::routes();
+Route::get('mostraongs','ongsctl@index');
+
+Route::get('esborra-ong','ongsctl@index');
+Route::get('esbong/{CIF}','ongsctl@destroy');
+
+Route::get('modifica-ongs','ongsctl@index');
+Route::get('modifong/{CIF}','ongsctl@show');
+Route::post('modifongs/{CIF}','ongsctl@edit'); 
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
