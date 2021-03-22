@@ -42,14 +42,11 @@ class ongctl extends Controller
             'poblacio' => 'required',
             'comarca' => 'required',
             'tipus' => 'required',
-            'utilitat_publica' => 'required'
         ]);
-        /*$ut;
+        $ut = false;
         if ($request->get('utilitat_publica') == 'on') {
-            $ut = true; 
-        } else {
-            $ut = false;
-        }*/
+            $ut = true;     
+        }
         $novaong = new Ong([
             'cif' => $request->get('cif'),
             'nom' => $request->get('nom'),
@@ -57,10 +54,15 @@ class ongctl extends Controller
             'poblacio' => $request->get('poblacio'),
             'comarca' => $request->get('comarca'),
             'tipus' => $request->get('tipus'),
-            'utilitat_publica' => $request->get('utilitat_publica', 0),
+            'utilitat_publica' => $ut
         ]);
-        $novaong->save();
-        return redirect()->route('ong.create')->with('Exit', 'Ong afegida');
+        $missatge = 'Aquesta ONG ja existeix';
+        try {
+            $novaong->save();
+            $missatge = 'ONG afegida';
+        } catch (Exception $e) {} finally {
+            return redirect()->route('ong.create')->with('Exit', $missatge);
+        }
     }
 
     /**

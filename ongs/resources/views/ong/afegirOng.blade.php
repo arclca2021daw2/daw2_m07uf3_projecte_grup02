@@ -13,12 +13,12 @@
     <form action="{{url('ong')}}" method="POST">
       {{csrf_field()}}
       <b>Dades ONG:<br><br></b>
-      CIF<input type="text" name="cif"><br>
-      Nom<input type="text" name="nom"><br>
-      Adreça<input type="text" name="adresa"><br>
-      Població<input type="text" name="poblacio"><br>
-      Comarca<input type="text" name="comarca"><br>
-      Tipus<input type="text" name="tipus"><br>
+      CIF<input type="text" name="cif" required><br>
+      Nom<input type="text" name="nom" required><br>
+      Adreça<input type="text" name="adresa" required><br>
+      Població<input type="text" name="poblacio" required><br>
+      Comarca<input type="text" name="comarca" required><br>
+      Tipus<input type="text" name="tipus" required><br>
       Utilitat pública<input type="checkbox" name="utilitat_publica"><br><br>
       <input value="Envia dades" type="submit">
     </form>
