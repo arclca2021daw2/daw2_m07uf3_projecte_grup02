@@ -15,10 +15,7 @@ class ongsctl extends Controller
     public function index()
     {
         $ongs= DB::select('select * from ongs');
-        //return view('ongs.mostraOngs',['ongs'=>$ongs]);
-        //return view('ongs.esborraOngs',['ongs'=>$ongs]);
         return view('ongs.seleccionaOngsPerModificacio',['ongs'=>$ongs]);
-
     }
 
     /**
@@ -46,9 +43,11 @@ class ongsctl extends Controller
             'poblacio'  =>  'required',
             'comarca'   =>  'required',
             'tipus'     =>  'required',
-            'utilitat_publica'  =>  'required'
             ]);
-
+        $ut = false;
+        if ($request->get('utilitat_publica') == 'on') {
+            $ut = true;     
+        }
         $nouOng = new Ongs([
             'CIF'   =>  $request->get('CIF'),
             'nom'   =>   $request->get('nom'),
@@ -56,11 +55,15 @@ class ongsctl extends Controller
             'poblacio'  =>   $request->get('poblacio'),
             'comarca'   =>   $request->get('comarca'),
             'tipus'     =>   $request->get('tipus'),
-            'utilitat_publica'  =>  $request->get('utilitat_publica'),
+            'utilitat_publica'  =>  $ut
         ]);
-        $nouOng->save();
-        return redirect()->route('ongs.create')->with('Exit','Dades afegides');
-
+        $missatge = 'Aquesta ONG ja existeix';
+        try {
+            $nouOng->save();
+            $missatge = 'ONG afegida';
+        } catch (Exception $e) {} finally {
+            return redirect()->route('ongs.create')->with('Exit', $missatge);
+        }
     }
 
 
