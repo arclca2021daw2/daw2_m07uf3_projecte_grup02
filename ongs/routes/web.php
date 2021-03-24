@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::resource('ongs','ongsctl');
+Route::resource('login','loginctl');
 //Auth::routes();
 Route::get('mostraongs','ongsctl@index');
 
@@ -28,3 +29,5 @@ Route::get('modifica-ongs','ongsctl@index');
 Route::get('modifong/{CIF}','ongsctl@show');
 Route::post('modifongs/{CIF}','ongsctl@edit'); 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::post('login','loginctl@show');

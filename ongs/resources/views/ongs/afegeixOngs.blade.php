@@ -21,11 +21,6 @@
     </style>
   </head>
   <body>
-      @if(\Session::has('Exit'))
-        <div class="alert alert-success">
-          <p>{{\Session::get('Exit')}}</p>
-        </div>
-      @endif
         <form action="{{url('ongs')}}" method="POST">
           {{csrf_field()}}
           <h1>Afegir ONG</h1>
