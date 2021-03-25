@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session;
 use DB;
 
 class loginctl extends Controller
@@ -44,15 +45,28 @@ class loginctl extends Controller
         $user = $_POST['user'];
         $passwd = $_POST['passwd'];
         $usuaris= DB::select('select * from usuaris where nom_usuari = ?',[$user]);
-        /*echo $usuaris[0]->contrasenya;
-        echo ' + ';
-        echo md5($passwd);*/
-
-        if ($usuaris[0]->contrasenya == md5($passwd)) {
-            echo 'correcte';
+        
+        if(count($usuaris) > 0) {
+            if ($usuaris[0]->contrasenya == md5($passwd)) {
+                $data = date('Y-m-d H:i:s');
+                $nom = $usuaris[0]->nom_usuari;
+                DB::update('update usuaris set ultima_entrada = ? where nom_usuari = ?',
+                [$data, $nom]);
+                Session::put('usuari', $usuaris[0]->nom_usuari);
+                if ($usuaris[0]->administrador) {
+                    Session::put('admin', true);
+                    return redirect('/'); 
+                } else {
+                    return redirect('/'); 
+                }
+            } else {
+                return redirect()->route('login.index')->with('error', 'Contrasenya incorrecta');
+            }
         } else {
-            echo 'incorrecte';
+            return redirect()->route('login.index')->with('error', 'Aquest usuari no existeix');
         }
+
+        
         
         
         //return view('ongs.dadesModificacioOngs',['ongs'=>$ongs]);
@@ -87,8 +101,11 @@ class loginctl extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($nom)
     {
-        //
+        $data = date('Y-m-d H:i:s');
+        DB::update('update usuaris set ultima_sortida = ? where nom_usuari = ?',
+        [$data, $nom]);
+        return redirect()->route('login.index');
     }
 }

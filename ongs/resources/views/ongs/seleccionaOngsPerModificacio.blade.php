@@ -18,6 +18,39 @@
                 <p>{{\Session::get('Exit')}}</p>
             </div>
         @endif
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                <img src="{{URL('/images/user.png')}}" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                {{\Session::get('usuari')}}
+                </a>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Inici</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ route ('ongs.index') }}">Associacions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" aria-disabled="true">Socis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" aria-disabled="true">Treballadors</a>
+                    </li>
+                    @if(\Session::has('admin'))
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#" aria-disabled="true">Usuaris</a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="tancarsessio/{{ \Session::get('usuari') }}">
+                        Tancar Sessió
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
         <h1>Llista ONGS</h1>
         @if(count($ongs) > 0)
             <table class="table table-striped table-hover">
@@ -52,8 +85,12 @@
                             <td>{{ $ong->comarca}}</td>
                             <td>{{ $ong->tipus}}</td>
                             <td><?php echo $ut ?></td>
-                            <td><a href = 'modifong/{{ $ong->CIF }}'>Modificar</a></td>
-                            <td><a href = 'esbong/{{ $ong->CIF }}'>Esborrar</a></td>
+                            <td><a href = 'modifong/{{ $ong->CIF }}'>
+                                <img src="{{URL('/images/edit.png')}}" alt="" width="25" class="d-inline-block align-text-top">
+                            </a></td>
+                            <td><a href = 'esbong/{{ $ong->CIF }}'>
+                                <img src="{{URL('/images/delete.png')}}" alt="" width="25" class="d-inline-block align-text-top">
+                            </a></td>
                         </tr>
                     @endforeach
                 </tbody>

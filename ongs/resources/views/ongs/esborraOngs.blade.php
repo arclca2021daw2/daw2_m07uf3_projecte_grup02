@@ -5,11 +5,6 @@
         <title>Visualitza dades ongs</title>
     </head>
     <body>
-        @if(\Session::has('Exit'))
-            <div class="alert alert-success">
-                <p>{{\Session::get('Exit')}}</p>
-            </div>
-        @endif
         <table border = "1">
             <tr>
                 <td>CIF</td>

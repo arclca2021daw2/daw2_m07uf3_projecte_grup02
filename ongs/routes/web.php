@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if (Session::has('usuari')) {
+        return view('welcome');
+    } else {
+        return view('login/login');
+    }
 });
 
 Route::resource('ongs','ongsctl');
@@ -31,3 +35,4 @@ Route::post('modifongs/{CIF}','ongsctl@edit');
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::post('login','loginctl@show');
+Route::get('tancarsessio/{user}', 'loginctl@destroy');

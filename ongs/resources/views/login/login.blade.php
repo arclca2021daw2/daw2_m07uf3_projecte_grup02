@@ -26,6 +26,10 @@
             </div>
             <input type="submit" class="btn btn-primary" value="Iniciar sessió">
         </form>
-
+        @if(\Session::has('error'))
+            <div class="alert alert-danger">
+                <p>{{\Session::get('error')}}</p>
+            </div>
+        @endif
    </body>  
 </html>
