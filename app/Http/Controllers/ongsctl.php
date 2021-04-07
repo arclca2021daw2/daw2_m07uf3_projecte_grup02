@@ -19,6 +19,8 @@ class ongsctl extends Controller
         //return view('ongs.esborraOngs',['ongs'=>$ongs]);
         return view('ongs.seleccionaOngsPerModificacio',['ongs'=>$ongs]);
 
+
+        
     }
 
     /**
