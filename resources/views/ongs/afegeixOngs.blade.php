@@ -2,55 +2,66 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" 
+    crossorigin="anonymous">
+    <title>Afegir ONG</title>
+    <style>
+      input[type="text"] {
+        width: 400px;
+        margin-bottom: 1%;
+        margin-left: 20px;
+      }
+      .labeltext {
+        margin-left: 20px;
+      }
+      h1 {
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Formulari per afegir dades a la taula ongs de la base de dades ongs</title>
-    <font face="Arial">
       @if(\Session::has('Exit'))
         <div class="alert alert-success">
           <p>{{\Session::get('Exit')}}</p>
         </div>
       @endif
-      <form action="{{url('ongs')}}" method="POST">
-      {{csrf_field()}}
-        <br>
-        <b>Introudeix les dades del nou alumne:<br><br>
-        </b>
-       CIF:
-        <input type="text" name="CIF">
-        <br>
-        nom:
-        <input type="text" name="nom">
-        <br>
-        adresa:
-        <input type="text" name="adresa">
-        <br>
-        poblacio:
-        <input type="text" name="poblacio">
-        <br>
-        comarca:
-        <input type="text" name="comarca">
-        <br>
-        tipus:
-        <input type="text" name="tipus">
-        <br>
-        utilitat_publica:
-        <input type="text" name="utilitat_publica">
-   <!--     <div>
-  <input type="radio" id="TRUE" name="utilitat_publica" value="TRUE" checked>
-  <label for="TRUE">TRUE</label>
-</div>
-<div>
-  <input type="radio" id="FALSE" name="utilitat_publica" value="FALSE">
-  <label for="FALSE">FALSE</label>
-</div>-->
-    
- 
-
-        <br><br>
-        <input value="Envia dades" type="submit">
-      </form>
-    </font>
+        <form action="{{url('ongs')}}" method="POST">
+          {{csrf_field()}}
+          <h1>Afegir ONG</h1>
+          <div class="form-floating">
+            <input class="form-control" id="cif" type="text" placeholder="CIF" name="CIF">
+            <label class="labeltext" for="cif">CIF</label>
+          </div>
+          <div class="form-floating">
+            <input class="form-control" id="nom" type="text" placeholder="Nom" name="nom">
+            <label class="labeltext" for="nom">Nom</label>
+          </div>
+          <div class="form-floating">
+            <input class="form-control" id="adresa" type="text" placeholder="Adreça" name="adresa">
+            <label class="labeltext" for="adresa">Adreça</label>
+          </div>
+          <div class="form-floating">
+            <input class="form-control" id="poblacio" type="text" placeholder="Població" name="poblacio">
+            <label class="labeltext" for="poblacio">Població</label>
+          </div>
+          <div class="form-floating">
+            <input class="form-control" id="comarca" type="text" placeholder="Comarca" name="comarca">
+            <label class="labeltext" for="comarca">Comarca</label>
+          </div>
+          <div class="form-floating">
+            <input class="form-control" id="tipus" type="text" placeholder="tipus" name="tipus">
+            <label class="labeltext" for="tipus">Tipus</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="utilitat_publica" name="utilitat_publica">
+            <label class="form-check-label" for="utilitat_publica">
+              Utilitat pública
+            </label>
+          </div>
+          <input class="btn btn-primary" value="Envia dades" type="submit">
+          <input class="btn btn-danger" value="Reset" type="reset">
+        </form>
+      
   </body>
 </html>

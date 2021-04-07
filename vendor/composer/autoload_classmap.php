@@ -14,6 +14,7 @@ return array(
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
     'App\\Http\\Controllers\\Auth\\VerificationController' => $baseDir . '/app/Http/Controllers/Auth/VerificationController.php',
+<<<<<<< HEAD
     'App\\Http\\Controllers\\ControladorSocisOngs' => $baseDir . '/app/Http/Controllers/ControladorSocisOngs.php',
     'App\\Http\\Controllers\\ControladorTreballadors' => $baseDir . '/app/Http/Controllers/ControladorTreballadors.php',
     'App\\Http\\Controllers\\ControladorTreballadors_Voluntaris' => $baseDir . '/app/Http/Controllers/ControladorTreballadors_Voluntaris.php',
@@ -21,6 +22,11 @@ return array(
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\ongsctl' => $baseDir . '/app/Http/Controllers/ongsctl.php',
     'App\\Http\\Controllers\\socisctl' => $baseDir . '/app/Http/Controllers/socisctl.php',
+=======
+    'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
+    'App\\Http\\Controllers\\ongsctl' => $baseDir . '/app/Http/Controllers/ongsctl.php',
+>>>>>>> d105e28a0e2219ee85b110bf5813cf31c0234687
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
@@ -31,17 +37,23 @@ return array(
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
+<<<<<<< HEAD
     'App\\Models\\socis_ongs' => $baseDir . '/app/Models/socis_ongs.php',
     'App\\Models\\treballador_professionals' => $baseDir . '/app/Models/treballador_professionals.php',
     'App\\Models\\treballadors' => $baseDir . '/app/Models/Treballadors.php',
     'App\\Models\\treballadors_voluntaris' => $baseDir . '/app/Models/treballadors_voluntaris.php',
+=======
+>>>>>>> d105e28a0e2219ee85b110bf5813cf31c0234687
     'App\\Ongs' => $baseDir . '/app/Ongs.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
+<<<<<<< HEAD
     'App\\Socis' => $baseDir . '/app/Socis.php',
+=======
+>>>>>>> d105e28a0e2219ee85b110bf5813cf31c0234687
     'Asm89\\Stack\\Cors' => $vendorDir . '/asm89/stack-cors/src/Cors.php',
     'Asm89\\Stack\\CorsService' => $vendorDir . '/asm89/stack-cors/src/CorsService.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
