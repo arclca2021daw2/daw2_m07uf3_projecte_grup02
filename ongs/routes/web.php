@@ -23,16 +23,18 @@ Route::get('/', function () {
 
 Route::resource('ongs','ongsctl');
 Route::resource('login','loginctl');
-//Auth::routes();
-Route::get('mostraongs','ongsctl@index');
+Route::resource('usuaris', 'usuarisctl');
+Route::resource('treballadors', 'trebctl');
 
-Route::get('esborra-ong','ongsctl@index');
+/*Route::get('mostraongs','ongsctl@index');
 Route::get('esbong/{CIF}','ongsctl@destroy');
-
-Route::get('modifica-ongs','ongsctl@index');
 Route::get('modifong/{CIF}','ongsctl@show');
 Route::post('modifongs/{CIF}','ongsctl@edit'); 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::post('login','loginctl@show');
 Route::get('tancarsessio/{user}', 'loginctl@destroy');
+
+Route::get('usuaris', 'usuarisctl@index');
+Route::get('esbusr/{user}', 'usuarisctl@destroy');
+Route::get('mostrarusr/{user}', 'usuarisctl@show');
+Route::post('modifusr/{user}', 'usuarisctl@edit');*/

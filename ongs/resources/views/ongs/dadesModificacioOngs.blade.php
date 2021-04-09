@@ -6,9 +6,22 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" 
         rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" 
         crossorigin="anonymous">
+        <style>
+            input[type="text"] {
+                width: 400px;
+                margin-bottom: 1%;
+                margin-left: 20px;
+            }
+            .labeltext {
+                margin-left: 20px;
+            }
+            h1 {
+                text-align: center;
+            }
+        </style>
     </head>
     <body>
-        <form action = "/modifongs/<?php echo $ongs[0]->CIF; ?>" method = "post">
+        <form action="{{route ('ongs.edit', $ongs[0]->CIF)}}" method = "get">
             <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
             <div class="form-floating">
                 <input value = '<?php echo $ongs[0]->nom; ?>' class="form-control" id="nom" type="text" placeholder="Nom" name="nom">

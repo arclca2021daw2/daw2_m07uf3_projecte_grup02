@@ -41,10 +41,8 @@ class ongsctl extends Controller
             'tipus'     =>   $request->get('tipus'),
             'utilitat_publica'  =>  $ut
         ]);
-        $missatge = 'Error afegint la ONG';
         try {
             $nouOng->save();
-            $missatge = 'ONG afegida';
         } catch (Exception $e) {} finally {
             return redirect()->route('ongs.index');
         }
@@ -54,7 +52,6 @@ class ongsctl extends Controller
     {
         $ongs= DB::select('select * from ongs where CIF = ?',[$CIF]);
         return view('ongs.dadesModificacioOngs',['ongs'=>$ongs]);
-
     }
 
     public function edit(Request $request,$CIF)

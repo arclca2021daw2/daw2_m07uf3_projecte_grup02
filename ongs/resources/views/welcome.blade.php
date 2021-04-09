@@ -11,6 +11,10 @@
             #user {
                 height: 30px;
             }
+            
+            .boto {
+                border: 0;
+            }
         </style>
     </head>
     <body>
@@ -35,13 +39,15 @@
                     </li>
                     @if(\Session::has('admin'))
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#" aria-disabled="true">Usuaris</a>
+                            <a class="nav-link" href="/usuaris">Usuaris</a>
                         </li>
                     @endif
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="tancarsessio/{{ \Session::get('usuari') }}">
-                        Tancar Sessió
-                        </a>
+                    <form action = "{{ route ('login.destroy', Session::get('usuari')) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input class="boto nav-link" type="submit" value="Tancar Sessió" />
+                    </form> 
                     </li>
                     
                 </ul>

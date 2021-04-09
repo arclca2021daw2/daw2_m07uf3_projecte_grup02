@@ -54,7 +54,7 @@
               Utilitat pública
             </label>
           </div>
-          <input class="btn btn-primary" value="Envia dades" type="submit">
+          <input class="btn btn-primary" value="Afegir ONG" type="submit">
           <input class="btn btn-danger" value="Reset" type="reset">
         </form>
       

@@ -40,10 +40,10 @@ class loginctl extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(Request $request)
     {
-        $user = $_POST['user'];
-        $passwd = $_POST['passwd'];
+        $user = $request->input('user');
+        $passwd = $request->input('passwd');
         $usuaris= DB::select('select * from usuaris where nom_usuari = ?',[$user]);
         
         if(count($usuaris) > 0) {
@@ -65,11 +65,6 @@ class loginctl extends Controller
         } else {
             return redirect()->route('login.index')->with('error', 'Aquest usuari no existeix');
         }
-
-        
-        
-        
-        //return view('ongs.dadesModificacioOngs',['ongs'=>$ongs]);
     }
 
     /**
@@ -103,6 +98,7 @@ class loginctl extends Controller
      */
     public function destroy($nom)
     {
+        Session::flush();
         $data = date('Y-m-d H:i:s');
         DB::update('update usuaris set ultima_sortida = ? where nom_usuari = ?',
         [$data, $nom]);

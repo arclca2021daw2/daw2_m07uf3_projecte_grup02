@@ -11,7 +11,7 @@
         </style>
     </head>
    <body>
-        <form action="/login" method="POST">
+        <form action="{{ route ('login.show', 'login')}}" method="GET">
             {{csrf_field()}}
             <h1>LOGO</h1>
             <h2>Iniciar sessió</h2>
