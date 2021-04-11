@@ -115,9 +115,17 @@ class trebctl extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $treb)
     {
-        //
+        if($request->has('voluntari')) {
+            $treballador = DB::table('treballadors_voluntaris')->where('treballadors.NIF', $treb)->join('treballadors', 'treballadors.NIF',
+            '=', 'treballadors_voluntaris.NIF')->select('*')->get();
+            return view('treballadors.modificarTreballadorVoluntari',['treballador'=>$treballador]);
+        } else {
+            $treballador = DB::table('treballador_professionals')->where('treballadors.NIF', $treb)->join('treballadors', 'treballadors.NIF',
+            '=', 'treballador_professionals.NIF')->select('*')->get();
+            return view('treballadors.modificarTreballadorProfessional',['treballador'=>$treballador]);
+        }
     }
 
     /**
@@ -126,9 +134,31 @@ class trebctl extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $nif)
     {
-        //
+        $nom_cognoms = $request->input('nom_cognoms');
+        $adresa = $request->input('adresa');
+        $poblacio = $request->input('poblacio');
+        $comarca = $request->input('comarca');
+        $tel_fixe = $request->input('tel_fixe');
+        $tel_mobil = $request->input('tel_mobil');
+        $email = $request->input('email');
+        $data_ingres = $request->input('data_ingres');        
+        DB::update('update treballadors set nom_cognoms = ?, adresa = ?, poblacio = ?, comarca = ?, tel_fixe = ?, tel_mobil = ?, email = ?, data_ingres = ? where NIF = ?',[$nom_cognoms,$adresa,$poblacio,$comarca,$tel_fixe,$tel_mobil, $email, $data_ingres, $nif]); 
+
+        if($request->has('voluntari')) {
+            $edat = $request->input('edat');
+            $professio = $request->input('professio');
+            $hores = $request->input('hores');
+            DB::update('update treballadors_voluntaris set edat = ?, professio = ?, hores = ? where NIF = ?', [$edat, $professio, $hores, $nif]);
+        } else {
+            $carrec = $request->input('carrec');
+            $quantitat_SS = $request->input('quantitat_SS');
+            $percentatge_irpf = $request->input('percentatge_irpf');
+            DB::update('update treballador_professionals set carrec = ?, quantitat_SS = ?, percentatge_irpf = ? where NIF = ?', [$carrec, $quantitat_SS, $percentatge_irpf, $nif]);
+        }
+        
+        return redirect('treballadors');
     }
 
     /**
@@ -149,8 +179,14 @@ class trebctl extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy(Request $request, $nif)
+    {    
+        if($request->has('voluntari')) {
+            DB::select('delete from treballadors_voluntaris where NIF = ?', [$nif]);
+        } else {
+            DB::select('delete from treballador_professionals where NIF = ?', [$nif]);
+        }
+        DB::select('delete from treballadors where NIF = ?', [$nif]);
+        return redirect()->route('treballadors.index');
     }
 }

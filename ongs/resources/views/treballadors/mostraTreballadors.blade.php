@@ -89,11 +89,11 @@
                             <td>{{ $tr_vol->edat}}</td>
                             <td>{{ $tr_vol->professio}}</td>
                             <td>{{ $tr_vol->hores}}</td>
-                            <td><a href = "{{ route ('treballadors.show', $tr_vol->NIF)}}">
+                            <td><a href = "{{ route ('treballadors.show', [$tr_vol->NIF, 'voluntari'])}}">
                                 <img src="{{URL('/images/edit.png')}}" alt="" width="25" class="d-inline-block align-text-top">
                             </a></td>
                             <td>
-                                <form action = "{{ route ('treballadors.destroy', $tr_vol->NIF) }}" method="POST">
+                                <form action = "{{ route ('treballadors.destroy', [$tr_vol->NIF, 'voluntari']) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button class="boto" type="submit">
@@ -146,11 +146,11 @@
                             <td>{{ $tr_prof->carrec}}</td>
                             <td>{{ $tr_prof->quantitat_SS}}</td>
                             <td>{{ $tr_prof->percentatge_irpf}}</td>
-                            <td><a href = "{{ route ('treballadors.show', $tr_prof->NIF)}}">
+                            <td><a href = "{{ route ('treballadors.show', [$tr_prof->NIF, 'professional'])}}">
                                 <img src="{{URL('/images/edit.png')}}" alt="" width="25" class="d-inline-block align-text-top">
                             </a></td>
                             <td>
-                                <form action = "{{ route ('treballadors.destroy', $tr_prof->NIF) }}" method="POST">
+                                <form action = "{{ route ('treballadors.destroy', [$tr_prof->NIF, 'professional']) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button class="boto" type="submit">

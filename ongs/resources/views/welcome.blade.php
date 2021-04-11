@@ -35,7 +35,7 @@
                         <a class="nav-link disabled" href="#" aria-disabled="true">Socis</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" aria-disabled="true">Treballadors</a>
+                        <a class="nav-link" href="{{ route ('treballadors.index') }}" aria-disabled="true">Treballadors</a>
                     </li>
                     @if(\Session::has('admin'))
                         <li class="nav-item">

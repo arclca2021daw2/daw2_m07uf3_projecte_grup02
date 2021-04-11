@@ -7,8 +7,8 @@
     crossorigin="anonymous">
     <title>Afegir Treballador</title>
     <style>
-      input[type="text"], input[type="number"], input[type="email"], input[type="date"] {
-        width: 400px;
+      input[type="text"], input[type="number"], input[type="email"], input[type="date"], select {
+        width: 400px !important;
         margin-bottom: 1%;
         margin-left: 20px;
       }
@@ -61,11 +61,8 @@
             <input class="form-control" id="data_ingres" type="date" placeholder="Data d'ingrés" name="data_ingres">
             <label class="labeltext" for="data_ingres">Data d'ingrés</label>
           </div>
-          <!--<div class="form-floating">
-            <input class="form-control" id="CIF_ong" type="text" placeholder="CIF ONG" name="CIF_ong">
-            <label class="labeltext" for="CIF_ong">CIF ONG</label>
-          </div>-->
-          <select class="form-select" aria-label="Default select example">
+          <label class="labeltext" for="CIF_ong">CIF ONG</label>
+          <select name="CIF_ong" id="CIF_ong" class="form-select" aria-label="Default select example">
             @foreach ($ongs as $ong)
               <option>{{$ong->CIF}}</option>
             @endforeach
