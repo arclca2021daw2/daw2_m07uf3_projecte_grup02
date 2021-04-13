@@ -56,6 +56,7 @@
           </div>
           <input class="btn btn-primary" value="Crear usuari" type="submit">
           <input class="btn btn-danger" value="Reset" type="reset">
+          <a href="{{ route ('usuaris.index')}}" class="btn btn-secondary">Tornar</a>
         </form>
       
   </body>

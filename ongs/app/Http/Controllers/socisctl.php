@@ -71,10 +71,10 @@ class socisctl extends Controller
                 $nouSociOng=new SocisOngs([
                     'CIF_ONG'=>$ong,
                     'NIF_soci'=>$request->get('NIF')
-                ]);
-                $nouSociOng->save();
-            }
-            return redirect('/socis');
+            ]);
+            $nouSociOng->save();
+        }
+        return redirect('/socis');
     }
 
     public function show($NIF)

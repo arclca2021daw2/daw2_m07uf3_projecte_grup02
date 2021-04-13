@@ -118,6 +118,10 @@
                     @endforeach
                 </tbody>
             </table>
+        @else
+        <div class="alert alert-warning" role="alert">
+            No hi ha cap soci a la base de dades
+        </div>    
         @endif
         <a class="btn btn-primary" href="{{ route ('socis.create') }}"> Afegir </a>
     </body>

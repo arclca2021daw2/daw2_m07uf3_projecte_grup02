@@ -61,15 +61,16 @@
                 <label class="labeltext" for="data_alta">Data d'alta</label>
             </div>
             <div class="form-floating">
-                <input value = '{{$soci[0]->quota_mensual}}' class="form-control" id="quota_mensual" type="number" placeholder="Quota mensual" name="quota_mensual">
+                <input value = '{{$soci[0]->quota_mensual}}' step="any" class="form-control" id="quota_mensual" type="number" placeholder="Quota mensual" name="quota_mensual">
                 <label class="labeltext" for="quota_mensual">Quota mensual</label>
             </div>
             <div class="form-floating">
-                <input value = '{{$soci[0]->aportacio_anual}}' class="form-control" id="aportacio_anual" type="number" placeholder="Aportació anual" name="aportacio_anual">
+                <input value = '{{$soci[0]->aportacio_anual}}' step="any" class="form-control" id="aportacio_anual" type="number" placeholder="Aportació anual" name="aportacio_anual">
                 <label class="labeltext" for="aportacio_anual">Aportació anual</label>
             </div>
             <input class="btn btn-primary" value="Modifica" type="submit">
             <input class="btn btn-danger" value="Reset" type="reset">            
+            <a href="{{ route ('socis.index')}}" class="btn btn-secondary">Tornar</a>
         </form>
     </body>
 </html>

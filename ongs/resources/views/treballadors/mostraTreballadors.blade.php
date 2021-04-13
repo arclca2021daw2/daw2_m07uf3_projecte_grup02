@@ -120,6 +120,10 @@
                     @endforeach
                 </tbody>
             </table>
+        @else
+        <div class="alert alert-warning" role="alert">
+            No hi ha cap treballador voluntari a la base de dades
+        </div>    
         @endif
         <a class="btn btn-primary" href="{{ route ('treballadors.create', 'voluntari') }}"> Afegir </a>
 
@@ -177,6 +181,10 @@
                     @endforeach
                 </tbody>
             </table>
+        @else
+        <div class="alert alert-warning" role="alert">
+            No hi ha cap treballador professional a la base de dades
+        </div>    
         @endif
         <a class="btn btn-primary" href="{{ route ('treballadors.create', 'professional') }}"> Afegir </a>
     </body>

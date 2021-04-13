@@ -75,6 +75,7 @@
             </div>
             <input class="btn btn-primary" value="Modifica" type="submit">
             <input class="btn btn-danger" value="Reset" type="reset">
+            <a href="{{ route ('treballadors.index')}}" class="btn btn-secondary">Tornar</a>
         </form>
     </body>
 </html>

@@ -75,6 +75,7 @@ class ongsctl extends Controller
 
     public function destroy($CIF)
     {
+        DB::select('delete from socis_ongs where CIF_ONG = ?', [$CIF]);
         DB::select('delete from ongs where CIF = ?', [$CIF]);
         return redirect()->route('ongs.index');
     }

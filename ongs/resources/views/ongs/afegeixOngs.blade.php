@@ -21,42 +21,42 @@
     </style>
   </head>
   <body>
-        <form action="{{url('ongs')}}" method="POST">
-          {{csrf_field()}}
-          <h1>Afegir ONG</h1>
-          <div class="form-floating">
-            <input class="form-control" id="cif" type="text" placeholder="CIF" name="CIF">
-            <label class="labeltext" for="cif">CIF</label>
-          </div>
-          <div class="form-floating">
-            <input class="form-control" id="nom" type="text" placeholder="Nom" name="nom">
-            <label class="labeltext" for="nom">Nom</label>
-          </div>
-          <div class="form-floating">
-            <input class="form-control" id="adresa" type="text" placeholder="Adreça" name="adresa">
-            <label class="labeltext" for="adresa">Adreça</label>
-          </div>
-          <div class="form-floating">
-            <input class="form-control" id="poblacio" type="text" placeholder="Població" name="poblacio">
-            <label class="labeltext" for="poblacio">Població</label>
-          </div>
-          <div class="form-floating">
-            <input class="form-control" id="comarca" type="text" placeholder="Comarca" name="comarca">
-            <label class="labeltext" for="comarca">Comarca</label>
-          </div>
-          <div class="form-floating">
-            <input class="form-control" id="tipus" type="text" placeholder="tipus" name="tipus">
-            <label class="labeltext" for="tipus">Tipus</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="utilitat_publica" name="utilitat_publica">
-            <label class="form-check-label" for="utilitat_publica">
-              Utilitat pública
-            </label>
-          </div>
-          <input class="btn btn-primary" value="Afegir ONG" type="submit">
-          <input class="btn btn-danger" value="Reset" type="reset">
-        </form>
-      
+    <form action="{{url('ongs')}}" method="POST">
+      {{csrf_field()}}
+      <h1>Afegir ONG</h1>
+      <div class="form-floating">
+        <input class="form-control" id="cif" type="text" placeholder="CIF" name="CIF">
+        <label class="labeltext" for="cif">CIF</label>
+      </div>
+      <div class="form-floating">
+        <input class="form-control" id="nom" type="text" placeholder="Nom" name="nom">
+        <label class="labeltext" for="nom">Nom</label>
+      </div>
+      <div class="form-floating">
+        <input class="form-control" id="adresa" type="text" placeholder="Adreça" name="adresa">
+        <label class="labeltext" for="adresa">Adreça</label>
+      </div>
+      <div class="form-floating">
+        <input class="form-control" id="poblacio" type="text" placeholder="Població" name="poblacio">
+        <label class="labeltext" for="poblacio">Població</label>
+      </div>
+      <div class="form-floating">
+        <input class="form-control" id="comarca" type="text" placeholder="Comarca" name="comarca">
+        <label class="labeltext" for="comarca">Comarca</label>
+      </div>
+      <div class="form-floating">
+        <input class="form-control" id="tipus" type="text" placeholder="tipus" name="tipus">
+        <label class="labeltext" for="tipus">Tipus</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="utilitat_publica" name="utilitat_publica">
+        <label class="form-check-label" for="utilitat_publica">
+          Utilitat pública
+        </label>
+      </div>
+      <input class="btn btn-primary" value="Afegir ONG" type="submit">
+      <input class="btn btn-danger" value="Reset" type="reset">
+      <a href="{{ route ('ongs.index')}}" class="btn btn-secondary">Tornar</a>
+    </form>
   </body>
 </html>

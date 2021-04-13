@@ -61,6 +61,7 @@
             <input class="form-control" id="data_ingres" type="date" placeholder="Data d'ingrés" name="data_ingres">
             <label class="labeltext" for="data_ingres">Data d'ingrés</label>
           </div>
+          <label class="labeltext" for="CIF_ong">ONG</label>
           <select name="CIF_ong" id="CIF_ong" class="form-select" aria-label="Default select example">
             @foreach ($ongs as $ong)
               <option value="{{$ong->CIF}}">{{$ong->nom}}</option>
@@ -71,15 +72,16 @@
             <label class="labeltext" for="carrec">Càrrec</label>
           </div>
           <div class="form-floating">
-            <input class="form-control" id="quantitat_SS" type="number" placeholder="Quantitat Seguretat Social" name="quantitat_SS">
+            <input class="form-control" step="any" id="quantitat_SS" type="number" placeholder="Quantitat Seguretat Social" name="quantitat_SS">
             <label class="labeltext" for="quantitat_SS">Quantitat Seguretat Social</label>
           </div>
           <div class="form-floating">
-            <input class="form-control" id="percentatge_irpf" type="number" placeholder="Percentatge IRPF" name="percentatge_irpf">
+            <input class="form-control" step="any" id="percentatge_irpf" type="number" placeholder="Percentatge IRPF" name="percentatge_irpf">
             <label class="labeltext" for="percentatge_irpf">Percentatge IRPF</label>
           </div>
           <input class="btn btn-primary" value="Crear treballador" type="submit">
           <input class="btn btn-danger" value="Reset" type="reset">
+          <a href="{{ route ('treballadors.index')}}" class="btn btn-secondary">Tornar</a>
         </form>
       
   </body>

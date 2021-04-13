@@ -61,10 +61,10 @@
             <input class="form-control" id="data_ingres" type="date" placeholder="Data d'ingrés" name="data_ingres">
             <label class="labeltext" for="data_ingres">Data d'ingrés</label>
           </div>
-          <label class="labeltext" for="CIF_ong">CIF ONG</label>
+          <label class="labeltext" for="CIF_ong">ONG</label>
           <select name="CIF_ong" id="CIF_ong" class="form-select" aria-label="Default select example">
             @foreach ($ongs as $ong)
-              <option>{{$ong->CIF}}</option>
+              <option value="{{$ong->CIF}}">{{$ong->nom}}</option>
             @endforeach
           </select>
           <div class="form-floating">
@@ -81,6 +81,7 @@
           </div>
           <input class="btn btn-primary" value="Crear treballador" type="submit">
           <input class="btn btn-danger" value="Reset" type="reset">
+          <a href="{{ route ('treballadors.index')}}" class="btn btn-secondary">Tornar</a>
         </form>
       
   </body>
