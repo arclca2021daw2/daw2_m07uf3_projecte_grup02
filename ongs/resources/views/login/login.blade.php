@@ -8,12 +8,19 @@
             h1, h2 {
                 text-align: center;
             }
+
+            #logo {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+ 
+            }
         </style>
     </head>
    <body>
         <form action="{{ route ('login.show', 'login')}}" method="GET">
             {{csrf_field()}}
-            <h1>LOGO</h1>
+            <img id="logo" src="{{URL('/images/logo.png')}}">
             <h2>Iniciar sessió</h2>
     
             <div class="form-floating mb-3">

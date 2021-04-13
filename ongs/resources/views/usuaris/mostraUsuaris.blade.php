@@ -17,11 +17,12 @@
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                <img src="{{URL('/images/user.png')}}" alt="" width="30" height="24" class="d-inline-block align-text-top">
-                {{\Session::get('usuari')}}
+            
+                <a class="navbar-brand" href="/usuaris/{{Session::get('usuari')}}">
+                    <img src="{{URL('/images/user.png')}}" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                    {{\Session::get('usuari')}}
                 </a>
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -31,18 +32,22 @@
                         <a class="nav-link" href="{{ route ('ongs.index') }}">Associacions</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" aria-disabled="true">Socis</a>
+                        <a class="nav-link" href="{{ route ('socis.index') }}">Socis</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" aria-disabled="true">Treballadors</a>
+                        <a class="nav-link" href="{{ route ('treballadors.index') }}">Treballadors</a>
                     </li>
+                    @if(\Session::has('admin'))
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Usuaris</a>
+                        </li>
+                    @endif
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Usuaris</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="tancarsessio/{{ \Session::get('usuari') }}">
-                        Tancar Sessió
-                        </a>
+                    <form action = "{{ route ('login.destroy', Session::get('usuari')) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input class="boto nav-link" type="submit" value="Tancar Sessió" />
+                    </form> 
                     </li>
                 </ul>
             </div>

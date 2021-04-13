@@ -15,14 +15,22 @@
             .boto {
                 border: 0;
             }
+
+            #logo {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+ 
+            }
         </style>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                <img src="{{URL('/images/user.png')}}" alt="" width="30" height="24" class="d-inline-block align-text-top">
-                {{\Session::get('usuari')}}
+            
+                <a class="navbar-brand" href="/usuaris/{{Session::get('usuari')}}">
+                    <img src="{{URL('/images/user.png')}}" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                    {{\Session::get('usuari')}}
                 </a>
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -32,14 +40,14 @@
                         <a class="nav-link" href="{{ route ('ongs.index') }}">Associacions</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" aria-disabled="true">Socis</a>
+                        <a class="nav-link" href="{{ route ('socis.index') }}">Socis</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route ('treballadors.index') }}" aria-disabled="true">Treballadors</a>
+                        <a class="nav-link" href="{{ route ('treballadors.index') }}">Treballadors</a>
                     </li>
                     @if(\Session::has('admin'))
                         <li class="nav-item">
-                            <a class="nav-link" href="/usuaris">Usuaris</a>
+                            <a class="nav-link" href="{{ route ('usuaris.index') }}">Usuaris</a>
                         </li>
                     @endif
                     <li class="nav-item">
@@ -49,11 +57,10 @@
                         <input class="boto nav-link" type="submit" value="Tancar Sessió" />
                     </form> 
                     </li>
-                    
                 </ul>
             </div>
         </nav>
         
-        <h1>LOGO</h1>         
+        <img id="logo" src="{{URL('/images/logo.png')}}">      
     </body>
 </html>

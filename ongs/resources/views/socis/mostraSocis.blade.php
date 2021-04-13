@@ -2,17 +2,31 @@
 <html>
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <title>Llista ONGS</title>
+        <title>Socis</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" 
         rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" 
         crossorigin="anonymous">
         <style>
-            h1 {
+             h1 {
                 text-align: center;
             }
 
             .boto {
                 border: 0;
+            }
+
+            th {
+                min-width: 70px;
+            }
+
+            nav {
+                position: fixed !important;
+                top: 0;
+                width: 100%;
+            }
+
+            #primerh1 {
+                margin-top: 70px;
             }
         </style>
     </head>
@@ -29,10 +43,10 @@
                         <a class="nav-link" href="/">Inici</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Associacions</a>
+                        <a class="nav-link" href="{{ route ('ongs.index') }}">Associacions</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route ('socis.index') }}">Socis</a>
+                        <a class="nav-link active" href="#">Socis</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route ('treballadors.index') }}">Treballadors</a>
@@ -52,61 +66,59 @@
                 </ul>
             </div>
         </nav>
-        <h1>Llista ONGS</h1>
-        @if(count($ongs) > 0)
+        <h1 id="primerh1">Llista socis</h1>
+        @if(count($socis) > 0)
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">CIF</th>
+                        <th scope="col">NIF</th>
                         <th scope="col">Nom</th>
                         <th scope="col">Adreça</th>
-                        <th scope="col">Població </th>
+                        <th scope="col">Població</th>
                         <th scope="col">Comarca</th>
-                        <th scope="col">Tipus</th>
-                        <th scope="col">Utilitat pública</th>
+                        <th scope="col">Fixe </th>
+                        <th scope="col">Mòbil </th>
+                        <th scope="col">Correu </th>
+                        <th scope="col">Data d'alta </th>
+                        <th scope="col">Mensual </th>
+                        <th scope="col">Anual</th>
+                        <th scope="col">CIF ONG</th>
                         <th scope="col">Modificar</th>
                         <th scope="col">Esborrar</th>
                     </tr>
                 </thead>
-                <tbody>
-                    @foreach ($ongs as $ong) 
-                        <?php
-                            $ut = 'No';
-                            if ($ong->utilitat_publica == 1) {
-                                $ut = 'Sí';
-                            }
-                        ?>
+                </tbody>
+                    @foreach ($socis as $soci) 
                         <tr>
-                            <th scope="row">{{ $loop->index+1}}</th>
-                            <td>{{ $ong->CIF}}</td>
-                            <td>{{ $ong->nom}}</td>
-                            <td>{{ $ong->adresa}}</td>
-                            <td>{{ $ong->poblacio}}</td>
-                            <td>{{ $ong->comarca}}</td>
-                            <td>{{ $ong->tipus}}</td>
-                            <td><?php echo $ut ?></td>
-                            <td><a href = "{{ route ('ongs.show', $ong->CIF) }}">
+                            <td>{{ $soci->NIF }}</td>
+                            <td>{{ $soci->nom_cognoms }}</td>
+                            <td>{{ $soci->adresa }}</td>
+                            <td>{{ $soci->poblacio }}</td>
+                            <td>{{ $soci->comarca }}</td>   
+                            <td>{{ $soci->tel_fixe }}</td>      
+                            <td>{{ $soci->tel_mobil }}</td>
+                            <td>{{ $soci->email }}</td>
+                            <td>{{ $soci->data_alta }}</td>
+                            <td>{{ $soci->quota_mensual }} €</td>
+                            <td>{{ $soci->aportacio_anual }} €</td>         
+                            <td>{{ $soci->CIF_ONG }}</td>  
+                            <td><a href = "{{ route ('socis.show', $soci->NIF)}}">
                                 <img src="{{URL('/images/edit.png')}}" alt="" width="25" class="d-inline-block align-text-top">
                             </a></td>
                             <td>
-                                <form action = "{{ route ('ongs.destroy', $ong->CIF) }}" method="POST">
+                                <form action="{{route ('socis.destroy', $soci->NIF)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button class="boto" type="submit">
                                         <img src="{{URL('/images/delete.png')}}" alt="" width="25" class="d-inline-block align-text-top">
                                     </button>
-                                </form> 
-                            </td>
+                                </form>
+                            </td>  
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-        @else
-            <div class="alert alert-warning" role="alert">
-                No hi ha cap ONG a la base de dades
-            </div>     
         @endif
-            <a class="btn btn-primary" href="{{ route ('ongs.create') }}"> Afegir </a>
+        <a class="btn btn-primary" href="{{ route ('socis.create') }}"> Afegir </a>
     </body>
 </html>

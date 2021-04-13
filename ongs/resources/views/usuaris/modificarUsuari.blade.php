@@ -65,22 +65,6 @@
                     </label>
                 </div>
                 @endif
-            @else
-                @if($usuaris[0]->administrador)
-                    <div class="form-check">
-                    <input hidden checked class="form-check-input" type="checkbox" id="admin" name="administrador">
-                        <label class="form-check-label" for="admin">
-                            Administrador
-                        </label>
-                    </div>
-                    @else
-                    <div class="form-check">
-                    <input hidden class="form-check-input" type="checkbox" id="admin" name="administrador">
-                        <label class="form-check-label" for="admin">
-                            Administrador
-                        </label>
-                    </div>
-                @endif
             @endif
             <input class="btn btn-primary" value="Modifica" type="submit">
             <input class="btn btn-danger" value="Reset" type="reset">

@@ -25,6 +25,7 @@ Route::resource('ongs','ongsctl');
 Route::resource('login','loginctl');
 Route::resource('usuaris', 'usuarisctl');
 Route::resource('treballadors', 'trebctl');
+Route::resource('socis', 'socisctl');
 
 /*Route::get('mostraongs','ongsctl@index');
 Route::get('esbong/{CIF}','ongsctl@destroy');

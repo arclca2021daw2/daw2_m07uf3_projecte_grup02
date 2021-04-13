@@ -63,7 +63,7 @@
           </div>
           <select name="CIF_ong" id="CIF_ong" class="form-select" aria-label="Default select example">
             @foreach ($ongs as $ong)
-              <option>{{$ong->CIF}}</option>
+              <option value="{{$ong->CIF}}">{{$ong->nom}}</option>
             @endforeach
           </select>
           <div class="form-floating">
